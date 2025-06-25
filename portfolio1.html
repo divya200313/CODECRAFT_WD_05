@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Portfolio</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  /* Reset and base styles */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #2a0744 0%, #5700ff 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #e0e0f0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    min-height: 100vh;
+  }
+  a {
+    color: #00ffd1;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+  h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.25em;
+    color: #a0a0f0;
+  }
+  p {
+    margin-bottom: 1em;
+    font-weight: 400;
+  }
+
+  /* Container and layout */
+  .container {
+    width: 90%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 16px;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(39, 0, 90, 0.8);
+    backdrop-filter: saturate(180%) blur(8px);
+    z-index: 1000;
+    padding: 12px 16px;
+    box-shadow: 0 2px 14px rgba(100, 0, 200, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: #00f1e1;
+  }
+  nav {
+    font-weight: 600;
+  }
+  nav a {
+    margin-left: 24px;
+    color: #b3b3f4cc;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: #00f1e1;
+    outline-offset: 3px;
+  }
+  nav a:focus-visible {
+    outline: 2px solid #00f1e1;
+    outline-offset: 4px;
+  }
+
+  /* Hero Section */
+  #home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+    margin-top: 48px;
+    margin-bottom: 64px;
+    background: rgba(39, 0, 90, 0.5);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  }
+  #home-text {
+    flex: 1 1 320px;
+    max-width: 580px;
+  }
+  #home-text h1 {
+    margin-bottom: 16px;
+    color: #c7b8ff;
+  }
+  #home-text p {
+    font-size: 1.15rem;
+    color: #d0d0ffdd;
+    margin-bottom: 32px;
+  }
+  #home-photo {
+    flex: 0 0 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 40px #6c63ffaa;
+    user-select: none;
+  }
+  #home-photo img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 16px;
+  }
+  #home-photo img:hover,
+  #home-photo img:focus {
+    transform: scale(1.05);
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* Skills summary */
+  #skills {
+    background: rgba(39, 0, 90, 0.3);
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 5px 30px rgba(108, 99, 255, 0.4);
+  }
+  #skills h2 {
+    margin-bottom: 24px;
+    color: #a3a3f7;
+  }
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .skill {
+    background: linear-gradient(135deg, #6c63ff, #2ddbdc);
+    color: #f5f5ff;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    user-select: text;
+    box-shadow: 0 0 18px rgb(108 99 255 / 0.7);
+    transition: transform 0.3s ease;
+  }
+  .skill:hover,
+  .skill:focus {
+    transform: scale(1.1);
+    outline: none;
+  }
+
+  /* About Me Section */
+  #about {
+    background: rgba(37, 0, 88, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(108, 99, 255, 0.6);
+    padding: 48px 32px;
+    margin-bottom: 64px;
+  }
+  #about h2 {
+    color: #b5aaff;
+    margin-bottom: 32px;
+  }
+  #about section {
+    margin-bottom: 36px;
+  }
+  #about h3 {
+    color: #c0bff8;
+    margin-bottom: 12px;
+  }
+  #about p {
+    font-size: 1rem;
+    color: #d0d0f0dd;
+    margin-bottom: 12px;
+  }
+  #about ul {
+    padding-left: 20px;
+    color: #cfcfffcc;
+    font-size: 1rem;
+  }
+  #about ul li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  /* Responsive Media Queries */
+  @media (max-width: 900px) {
+    #home {
+      flex-direction: column;
+      padding: 32px 24px;
+      margin-top: 32px;
+      margin-bottom: 48px;
+    }
+    #home-photo {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    #home-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+  }
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    header {
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 16px 12px;
+    }
+    nav a {
+      margin-left: 14px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+    <div class="logo" tabindex="0">PORTFOLIO</div>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#skills" tabindex="0">Skills</a>
+      <a href="#about" tabindex="0">About Me</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" role="main">
+  <section id="home" aria-label="Home introduction">
+    <div id="home-text">
+      <h1 tabindex="0">Hello, I'm Divya Gaonkar</h1>
+      <p tabindex="0">Detail-oriented and motivated BCA graduate while currently purseving MCA . Skilled in Java, Python, SQL, and web technologies.  
+Seeking an entry-level position to contribute to innovative software solutions and continue learning in a dynamic tech environment.</p>
+      <a href="#about" style="font-weight:700;color:#00ffd1;border-bottom:2px solid transparent;transition:border-color 0.3s ease;" onfocus="this.style.borderColor='#00ffd1'" onblur="this.style.borderColor='transparent'">Learn more about me &rarr;</a>
+    </div>
+    <div id="home-photo" tabindex="0" aria-label="Professional photo">
+      <img src="C:\Users\ashwi\python practice first time\photo_2025-06-20_17-18-30.jpg"/>
+</div>
+  </section>
+
+  <section id="skills" aria-label="Summary of skills">
+    <h2 tabindex="0">Skills & Technologies</h2>
+    <div class="skills-list" role="list" aria-label="List of skills">
+        <span class="skill" role="listitem" tabindex="0">Java</span>
+        <span class="skill" role="listitem" tabindex="0">Python</span>
+        <span class="skill" role="listitem" tabindex="0"> C </span>
+      <span class="skill" role="listitem" tabindex="0">HTML5 & CSS</span>
+      <span class="skill" role="listitem" tabindex="0">Git & GitHub</span>
+      <span class="skill" role="listitem" tabindex="0">PHP</span>
+      <span class="skill" role="listitem" tabindex="0">MySQL</span>
+      <span class="skill" role="listitem" tabindex="0">Linux</span>
+      
+    </div>
+  </section>
+
+  <section id="about" aria-label="About me section">
+    <h2 tabindex="0">About Me</h2>
+    <section aria-label="Background">
+      <h3 tabindex="0">Background</h3>
+      <p tabindex="0">
+<p tabindex="0">
+        Detail-oriented and motivated BCA graduate with a solid foundation in computer applications,  
+programming, and software development. Skilled in Java, Python, SQL, and web technologies  
+with a passion for solving real-world problems through efficient coding and clean design.  
+Seeking an entry-level position to contribute to innovative software solutions and continue  
+learning in a dynamic tech environment.
+      </p>
+    </section>
+    <section aria-label="Education">
+      <h3 tabindex="0">Education</h3>
+      <ul tabindex="0">
+             <li>Bachelor of Computer Applications (BCA), Karnataka University, Dharwad,  
+Karnataka 2021-2024.</li>
+<li>Currently purseving MCA @GLOBAL INSTITUTE OF MANAGEMENT SCIENCES.</li>
+      </ul>
+    </section>
+    <section aria-label="Professional experience">
+      <h3 tabindex="0">Professional Experience</h3>
+      <ul tabindex="0">
+        <li>
+          <p>Currently an MCA student with a keen interest in software development, web technologies, and building real-world solutions. Always eager to learn, code, and grow.</p>
+        </li>
+      </ul>
+    </section>
+    <section aria-label="Project">
+      <h3 tabindex="0">Project</h3>
+      <ul tabindex="0">
+             <p>Online Veterinary Appointment System (OVAS): The “Online Veterinary Appointment System” is  
+a web-based application designed to streamline appointment management for veterinary clinics  
+and enhance client satisfaction through convenient online booking. Languages: PHP, HTML, CSS.</p>
+      </ul>
+    </section>
+     <section aria-label="Languages Known">
+      <h3 tabindex="0">Languages Known</h3>
+      <ul tabindex="0">
+             <li>ENGLISH</li>
+<li>HINDI</li>
+<li>KANNADA</li>
+      </ul>
+    </section>
+  </section>
+</main>
+
+</body>
+</html>
+
+    </section>
+    <section aria-label="Background">
+      <h3 tabindex="0">Background</h3>
+      <ul tabindex="0">
+        <li>
+<p tabindex="0">
+        Detail-oriented and motivated BCA graduate with a solid foundation in computer applications,  
+programming, and software development. Skilled in Java, Python, SQL, and web technologies  
+with a passion for solving real-world problems through efficient coding and clean design.  
+Seeking an entry-level position to contribute to innovative software solutions and continue  
+learning in a dynamic tech environment.
+      </p>
+    </section>
+    <section aria-label="Education">
+      <h3 tabindex="0">Education</h3>
+      <ul tabindex="0">
+        <li>Bachelor of Computer Applications (BCA), Karnataka University, Dharwad,  
+Karnataka 2021-2024.</li>
+<li>Currently purseving MCA @GLOBAL INSTITUTE OF MANAGEMENT SCIENCES</li>
+      </ul>
+    </section>
+   <section aria-label="Professional experience">
+      <h3 tabindex="0">Professional Experience</h3>
+      <ul tabindex="0">
+        <li>
+             <p>Currently an MCA student with a keen interest in software development, web technologies, and building real-world solutions. Always eager to learn, code, and grow.</p>
+        </li>
+      </ul>
+    </section>
+  </section>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer" style="text-align:center; padding:24px 0; color:#888">
+  <small>© 2025 Divya Gaonkar | Portfolio</small>
+</footer>
+
+</body>
+</html>
+    </section>
+  </section>
+</main>
